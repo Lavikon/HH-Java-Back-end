@@ -14,10 +14,10 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY) // strategy for id is best as IDENTITY
     private Long id;
 
-    // Class cleated (Ex c2.4)
+    // Class created (Ex c2.5)
     private String title;
     private String author;
-    @Column(name="publish_year")
+    @Column(name="publish_year") // for handling "year" being reserved column name in SQL
     private Integer year;
     private String isbn;
     private Double price;
@@ -33,7 +33,7 @@ public class Book {
     public Book() {
         this.title = null;
         this.author = null;
-        this.year = null; // default 0, only for Integer, not int
+        this.year = null; // default 0, null allowed only for Integer, not int
         this.isbn = null;
         this.price = null;
     }
