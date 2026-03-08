@@ -6,7 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
-@Entity // Entity goes up here
+@Entity // Entity goes up here (Ex c3.1b)
 public class Book {
 
     // Entity and ID added (Ex c3.1b)

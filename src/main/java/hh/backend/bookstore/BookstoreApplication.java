@@ -21,9 +21,11 @@ public class BookstoreApplication {
     public CommandLineRunner bookDemo(BookRepository repository) {
         return (args) -> {
 
-            repository.save(new Book("Dune", "Frank Herbert", 1965, "123456", 29.99));
-            repository.save(new Book("1984", "George Orwell", 1949, "654321", 19.99));
-            repository.save(new Book("Foundation", "Isaac Asimov", 1951, "987654", 24.99));
+            repository.save(new Book("Farewell to arms, A", "Ernest Hemingway", 1929, "9780020519003", 19.99));
+            repository.save(new Book("Animal Farm", "George Orwell", 1945, "9780194267533", 19.99));
+            repository.save(new Book("Dune", "Frank Herbert", 1965, "9780441172719", 29.99));
+            repository.save(new Book("1984", "George Orwell", 1949, "9780155658110", 19.99));
+            repository.save(new Book("Foundation", "Isaac Asimov", 1951, "9780553293357", 24.99));
 /* 
 			System.out.println("Books in database:");
 			for (Book book : repository.findAll()) {

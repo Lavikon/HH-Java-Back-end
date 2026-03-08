@@ -14,12 +14,11 @@ import hh.backend.bookstore.domain.Book;
 import hh.backend.bookstore.domain.BookRepository;
 
 @Controller
-@ResponseBody //for index only in (Ex c2.5)
 public class BookController {
     
     @GetMapping("/index")    // For handling index request (Ex c2.5)
     public String index(){
-        return "This is the main page";
+        return "index";
     }
 
     // later segments will be used for other exercises
