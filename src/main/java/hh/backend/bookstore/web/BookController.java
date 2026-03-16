@@ -29,29 +29,29 @@ public class BookController {
         model.addAttribute("books", repository.findAll());
         return "booklist";
     }
+    
+    // Add a book form (Ex c3.3)
+    @GetMapping("/add")
+    public String addBook(Model model) {
+        model.addAttribute("book", new Book());
+        return "addbook";
+    }
 
+    // Save new book (Ex c3.3)
+    @PostMapping("/save")
+    public String save(Book book) {
+        repository.save(book);
+        return "redirect:/booklist";
+    }
+
+    // Delete book (Ex c3.3)
+    @GetMapping("/delete/{id}")
+    public String deleteBook(@PathVariable("id") Long id) {
+        repository.deleteById(id);
+        return "redirect:/booklist";
+    }
+    
     // later segments will be used for other exercises
-
-    // // Add a book form
-    // @GetMapping("/add")
-    // public String addBook(Model model) {
-    //     model.addAttribute("book", new Book());
-    //     return "addbook";
-    // }
-
-    // // Save new book
-    // @PostMapping("/save")
-    // public String save(Book book) {
-    //     repository.save(book);
-    //     return "redirect:/booklist";
-    // }
-
-    // // Delete book (Ex c3.3)
-    // @GetMapping("/delete/{id}")
-    // public String deleteBook(@PathVariable("id") Long id) {
-    //     repository.deleteById(id);
-    //     return "redirect:/booklist";
-    // }
 
     // // Edit book (Ex c3.4)
     // @GetMapping("/edit/{id}")
