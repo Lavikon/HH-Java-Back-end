@@ -16,6 +16,11 @@ public class Category {
 
     private String name;
 
+    @Override
+    public String toString() {
+        return "[" + categoryid + "] " + name;
+    }
+
     public Category() {
         this.name = null;
     }
