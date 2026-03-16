@@ -1,8 +1,4 @@
 package hh.backend.bookstore.web;
-/* Replaced by Repo
-import java.util.ArrayList;
-import java.util.List;
-*/
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,17 +17,20 @@ public class BookController {
         return "index";
     }
 
+    // Create the repository
+    private BookRepository repository;
+
+    public BookController(BookRepository repository) {
+    this.repository = repository;
+}
+    // Display booklist (Ex c3.2)
+    @GetMapping("/booklist")
+    public String getBooks(Model model){
+        model.addAttribute("books", repository.findAll());
+        return "booklist";
+    }
+
     // later segments will be used for other exercises
-
-    // // private List<Book> books = new ArrayList<Book>(); // replaced by repo
-    // private BookRepository repository;
-
-    // @GetMapping("/booklist")
-    // public String getBooks(Model model){
-    //     // model.addAttribute("books", books); // replaced by repo
-    //     model.addAttribute("books", repository.findAll());
-    //     return "booklist";
-    // }
 
     // // Add a book form
     // @GetMapping("/add")

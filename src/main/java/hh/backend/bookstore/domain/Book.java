@@ -38,6 +38,15 @@ public class Book {
         this.price = null;
     }
 
+    // as id was added later, it also needed getter and setters (Ex c3.1b)
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     // getters and setters generated
     public String getTitle() {
         return title;

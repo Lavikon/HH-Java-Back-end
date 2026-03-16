@@ -26,12 +26,11 @@ public class BookstoreApplication {
             repository.save(new Book("Dune", "Frank Herbert", 1965, "9780441172719", 29.99));
             repository.save(new Book("1984", "George Orwell", 1949, "9780155658110", 19.99));
             repository.save(new Book("Foundation", "Isaac Asimov", 1951, "9780553293357", 24.99));
-/* 
+
 			System.out.println("Books in database:");
 			for (Book book : repository.findAll()) {
 				System.out.println(book.getTitle() + " by " + book.getAuthor());
 			}
-*/
         };
 
     }
