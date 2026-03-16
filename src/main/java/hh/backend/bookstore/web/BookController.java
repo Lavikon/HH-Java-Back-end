@@ -34,7 +34,7 @@ public class BookController {
     @GetMapping("/add")
     public String addBook(Model model) {
         model.addAttribute("book", new Book());
-        return "addbook";
+        return "bookform";
     }
 
     // Save new book (Ex c3.3)
@@ -50,14 +50,12 @@ public class BookController {
         repository.deleteById(id);
         return "redirect:/booklist";
     }
-    
-    // later segments will be used for other exercises
 
-    // // Edit book (Ex c3.4)
-    // @GetMapping("/edit/{id}")
-    // public String editBook(@PathVariable("id") Long id, Model model) {
-    //     Book book = repository.findById(id).orElse(null);
-    //     model.addAttribute("book", book);
-    //     return "addbook";   // reuse same form
-    // }
+    // Edit book (Ex c3.4)
+    @GetMapping("/edit/{id}")
+    public String editBook(@PathVariable("id") Long id, Model model) {
+        Book book = repository.findById(id).orElse(null);
+        model.addAttribute("book", book);
+        return "bookform";   // reuse same form
+    }
 }
