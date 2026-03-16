@@ -2,6 +2,8 @@ package hh.backend.bookstore.domain;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,6 +22,7 @@ public class Category {
 
     private String name;
 
+    @JsonIgnore // adding JSON ignore to prevent looping (Ex c5.1a b)
     // Adding relationship to books (Ex c4.3a iv)
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
     private List<Book> books; // added list of books (Ex c4.3a ii.)
