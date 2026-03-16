@@ -4,7 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 
 // created for Ex c4.1
 
-public interface CategoryRepository extends CrudRepository<Book,Long> {
+public interface CategoryRepository extends CrudRepository<Category,Long> {
 
 }
-

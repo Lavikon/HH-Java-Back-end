@@ -8,6 +8,8 @@ import jakarta.persistence.Id;
 @Entity
 public class Category {
 
+    // Added in Ex c4.1
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long categoryid;

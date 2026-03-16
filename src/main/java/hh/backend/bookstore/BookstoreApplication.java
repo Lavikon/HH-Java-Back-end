@@ -34,21 +34,20 @@ public class BookstoreApplication {
         };
 
     }
-/* Does not work
+
     @Bean
     public CommandLineRunner categoryDemo(CategoryRepository repository) {
         return (args) -> {
 
             repository.save(new Category("SciFi"));
-            repository.save(new Category("Comic"));
             repository.save(new Category("Fantasy"));
-            repository.save(new Category("Horror"));
-            / * 
+            repository.save(new Category("Fiction"));
+            
             System.out.println("Categories in database:");
             for (Category category : repository.findAll()) {
                 System.out.println(category.getCategoryid() + " " + category.getName());
             }
-* /
+
 		};  
-    }   Does not work */
+    }   
 }
