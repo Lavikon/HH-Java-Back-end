@@ -11,7 +11,7 @@
     
     <ul>
         <li th:each="category: ${categories}">
-            <span th:text="${category}"></span> <!--This does the java get method-->
+            <span th:text="${category.name}"></span> [id: <span th:text="${category.categoryid}"></span>]
         </li>
     </ul>
 

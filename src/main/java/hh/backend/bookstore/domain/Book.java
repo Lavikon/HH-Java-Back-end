@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity // Entity goes up here (Ex c3.1b)
 public class Book {
@@ -22,13 +24,30 @@ public class Book {
     private String isbn;
     private Double price;
 
-    public Book(String title, String author, Integer year, String isbn, Double price) {
+    // relations to categories (Ex c4.3a)
+    @ManyToOne
+    @JoinColumn(name = "categoryid")
+    private Category category; // Ex c4.3a i.
+
+
+    // generated a new constructor to include category (Ex c4.3b)
+    public Book(String title, String author, Integer year, String isbn, Double price, Category category) {
         this.title = title;
         this.author = author;
         this.year = year;
         this.isbn = isbn;
         this.price = price;
+        this.category = category;
     }
+
+    // // Old constructors
+    // public Book(String title, String author, Integer year, String isbn, Double price) {
+    //     this.title = title;
+    //     this.author = author;
+    //     this.year = year;
+    //     this.isbn = isbn;
+    //     this.price = price;
+    // }
 
     public Book() {
         this.title = null;
@@ -36,6 +55,7 @@ public class Book {
         this.year = null; // default 0, null allowed only for Integer, not int
         this.isbn = null;
         this.price = null;
+        this.category = null; // added a new null constructor
     }
 
     // as id was added later, it also needed getter and setters (Ex c3.1b)
@@ -83,6 +103,15 @@ public class Book {
     public String toString() {
         return "Book [title=" + title + ", author=" + author + ", year=" + year + ", isbn=" + isbn + ", price=" + price
                 + "]";
+    }
+
+    // getters and setters for categories (Ex c4.3a iii.)
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     

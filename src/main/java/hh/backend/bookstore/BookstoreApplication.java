@@ -17,36 +17,34 @@ public class BookstoreApplication {
 		SpringApplication.run(BookstoreApplication.class, args);
 	}
 
- 	@Bean
-    public CommandLineRunner bookDemo(BookRepository repository) {
-        return (args) -> {
-
-            repository.save(new Book("Farewell to arms, A", "Ernest Hemingway", 1929, "9780020519003", 19.99));
-            repository.save(new Book("Animal Farm", "George Orwell", 1945, "9780194267533", 19.99));
-            repository.save(new Book("Dune", "Frank Herbert", 1965, "9780441172719", 29.99));
-            repository.save(new Book("1984", "George Orwell", 1949, "9780155658110", 19.99));
-            repository.save(new Book("Foundation", "Isaac Asimov", 1951, "9780553293357", 24.99));
-
-			System.out.println("Books in database:");
-			for (Book book : repository.findAll()) {
-				System.out.println(book.getTitle() + " by " + book.getAuthor());
-			}
-        };
-
-    }
-
+    // commandlinerunner for saving categories and books merged into one (Ex c4.3b)
     @Bean
-    public CommandLineRunner categoryDemo(CategoryRepository repository) {
+    public CommandLineRunner demo(CategoryRepository cRepository,BookRepository bRepository) {
         return (args) -> {
-
-            repository.save(new Category("SciFi"));
-            repository.save(new Category("Fantasy"));
-            repository.save(new Category("Fiction"));
+            // first create categories and save them
+            Category scifi = cRepository.save(new Category("SciFi"));
+            Category fantasy = cRepository.save(new Category("Fantasy"));
+            Category fiction = cRepository.save(new Category("Fiction"));
             
+            // next create the books
+            bRepository.save(new Book("Farewell to arms, A", "Ernest Hemingway", 1929, "9780020519003", 19.99, fiction));
+            bRepository.save(new Book("Animal Farm", "George Orwell", 1945, "9780194267533", 19.99, fiction));
+            bRepository.save(new Book("Dune", "Frank Herbert", 1965, "9780441172719", 29.99, scifi));
+            bRepository.save(new Book("1984", "George Orwell", 1949, "9780155658110", 19.99, fiction));
+            bRepository.save(new Book("Foundation", "Isaac Asimov", 1951, "9780553293357", 24.99, scifi));
+            bRepository.save(new Book("Fellowship of the Ring, The", "J.R.R. Tolkien", 1954, "9780008567125", 21.99, fantasy));
+
+
+            // Print output to confirm input
             System.out.println("Categories in database:");
-            for (Category category : repository.findAll()) {
+            for (Category category : cRepository.findAll()) {
                 System.out.println(category.getCategoryid() + " " + category.getName());
             }
+
+			System.out.println("Books in database:");
+			for (Book book : bRepository.findAll()) {
+				System.out.println(book.getTitle() + " by " + book.getAuthor() + " in " + book.getCategory());
+			}
 
 		};  
     }   

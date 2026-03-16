@@ -1,9 +1,13 @@
 package hh.backend.bookstore.domain;
 
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Category {
@@ -16,9 +20,14 @@ public class Category {
 
     private String name;
 
+    // Adding relationship to books (Ex c4.3a iv)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
+    private List<Book> books; // added list of books (Ex c4.3a ii.)
+
+    // toString has been already modified, so books list was not added (Ex c4.3a v.)
     @Override
     public String toString() {
-        return "[" + categoryid + "] " + name;
+        return name;
     }
 
     public Category() {
@@ -44,6 +53,15 @@ public class Category {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    // new getters and setters (Ex c4.3a iii.)
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<Book> books) {
+        this.books = books;
     }
 
 }
