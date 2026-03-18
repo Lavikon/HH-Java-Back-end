@@ -1,26 +1,29 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Store Index</title>
 </head>
+
 <body>
     <div class="container">
-    <h1>Book Store</h1>
-    <p>This is the index page</p>
+        <h1>Book Store</h1>
+        <p>This is the index page</p>
 
-    <h2>Security access</h2>
-    <p><a th:href="@{/login}">Login</a></p>
+        <h2>Security access</h2>
+        <p><a th:href="@{/login}">Login</a></p>
 
-    <h2>Books</h2>
-    <p><a th:href="@{/booklist}">List of Books</a></p>
-    <p><a th:href="@{/add}" class="btn btn-success">Add a book</a></p>
+        <h2>Books</h2>
+        <p><a th:href="@{/booklist}">List of Books</a></p>
+        <p><a th:href="@{/add}" class="btn btn-success">Add a book</a></p>
 
-    <h2>Categories</h2>
-    <p><a th:href="@{/categories}">List of Categories</a></p>
-    <p><a th:href="@{/addcategory}" class="btn btn-success">Add a category</a></p>
+        <h2>Categories</h2>
+        <p><a th:href="@{/categories}">List of Categories</a></p>
+        <p><a th:href="@{/addcategory}" class="btn btn-success">Add a category</a></p>
     </div>
 </body>
+
 </html>

@@ -1,22 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <title>Category Form</title>
     <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
 </head>
+
 <body>
+    <div class="container">
 
-<h1>Category Form</h1>
+        <h1>Category Form</h1>
 
-<form th:action="@{/savecat}" th:object="${category}" method="post">
+        <form th:action="@{/savecat}" th:object="${category}" method="post">
 
-    <input type="hidden" th:field="*{categoryid}" />
+            <input type="hidden" th:field="*{categoryid}" />
 
-    Name: <input type="text" th:field="*{name}" /><br><br>
-    <button type="submit">Save</button>
-</form>
+            Name: <input type="text" th:field="*{name}" /><br><br>
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
 
-<p><a th:href="@{/categories}">Back to list</a></p>
-
+        <p><a th:href="@{/categories}">Back to list</a></p>
+    </div>
 </body>
+
 </html>

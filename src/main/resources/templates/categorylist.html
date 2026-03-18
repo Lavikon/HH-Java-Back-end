@@ -1,20 +1,25 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Category list</title>
     <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
 </head>
-<body>
-    <h1>Categories</h1>
-    
-    <ul>
-        <li th:each="category: ${categories}">
-            <span th:text="${category.name}"></span> [id: <span th:text="${category.categoryid}"></span>]
-        </li>
-    </ul>
 
-<p><a th:href="@{/addcategory}" class="btn btn-success">Add category</a></p>
+<body>
+    <div class="container">
+        <h1>Categories</h1>
+
+        <ul>
+            <li th:each="category: ${categories}">
+                <span th:text="${category.name}"></span> [id: <span th:text="${category.categoryid}"></span>]
+            </li>
+        </ul>
+
+        <p><a th:href="@{/addcategory}" class="btn btn-success">Add category</a></p>
+    </div>
 </body>
+
 </html>
