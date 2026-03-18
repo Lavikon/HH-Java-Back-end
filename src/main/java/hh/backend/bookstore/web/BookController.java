@@ -17,21 +17,23 @@ public class BookController {
         return "index";
     }
 
+    // DATABASE
     // add the repositories
-    private BookRepository repository;
+    private BookRepository repository; // (Ex c3.2)
     private CategoryRepository cRepository; // (Ex c4.4)
 
     public BookController(BookRepository repository,CategoryRepository cRepository) {
-    this.repository = repository;
-    this.cRepository = cRepository;
-}
+        this.repository = repository;
+        this.cRepository = cRepository;
+    }
+
+    // CRUD
     // Display booklist (Ex c3.2)
     @GetMapping("/booklist")
     public String getBooks(Model model){
         model.addAttribute("books", repository.findAll());
         return "booklist";
     }
-    
     // Add a book form (Ex c3.3)
     @GetMapping("/add")
     public String addBook(Model model) {
@@ -39,21 +41,18 @@ public class BookController {
         model.addAttribute("categories", cRepository.findAll()); // added to pass categories to form (Ex c4.4)
         return "bookform";
     }
-
     // Save new book (Ex c3.3)
     @PostMapping("/save")
     public String save(Book book) {
         repository.save(book);
         return "redirect:/booklist";
     }
-
     // Delete book (Ex c3.3)
     @GetMapping("/delete/{id}")
     public String deleteBook(@PathVariable("id") Long id) {
         repository.deleteById(id);
         return "redirect:/booklist";
     }
-
     // Edit book (Ex c3.4)
     @GetMapping("/edit/{id}")
     public String editBook(@PathVariable("id") Long id, Model model) {
@@ -61,5 +60,12 @@ public class BookController {
         model.addAttribute("book", book);
         model.addAttribute("categories", cRepository.findAll()); // added to pass categories to form (Ex c4.4)
         return "bookform";   // reuse same form
+    }
+
+    // SECURITY
+    // Login (Ex c6.1c)
+    @GetMapping("/login")
+    public String login() {
+        return "login";
     }
 }

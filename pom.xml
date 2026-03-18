@@ -66,6 +66,7 @@
 			<scope>test</scope>
 		</dependency>
 
+<!-- Databases JPA and H2 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -80,6 +81,7 @@
 			<scope>runtime</scope>
 		</dependency>
 
+<!-- REST -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-rest</artifactId>
@@ -89,6 +91,15 @@
     		<artifactId>spring-data-rest-webmvc</artifactId>
 		</dependency>
 
+<!-- Security c6.1a -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<dependency>
+    		<groupId>org.thymeleaf.extras</groupId>
+    		<artifactId>thymeleaf-extras-springsecurity6</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
