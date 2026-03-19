@@ -42,7 +42,7 @@
                     <td th:text="${book.year}"></td>
                     <td th:text="${book.category} ? ${book.category.name} : ' '"></td>
                     <td>
-                        <span sec:authorize="hasRole('ADMIN')">
+                        <span sec:authorize="hasAuthority('ADMIN')"> <!-- changed in c6.2 hasRole to hasAuthority-->
                             <a th:href="@{/delete/{id}(id=${book.id})}" class="btn btn-danger">Delete</a>
                             | </span>
                         <a th:href="@{/edit/{id}(id=${book.id})}" class="btn btn-warning">Edit</a>
