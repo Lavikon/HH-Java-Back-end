@@ -17,6 +17,7 @@ public class Book {
     private Long id;
 
     // Class created (Ex c2.5)
+    @Column(nullable = false)
     private String title;
     private String author;
     @Column(name="publish_year") // for handling "year" being reserved column name in SQL

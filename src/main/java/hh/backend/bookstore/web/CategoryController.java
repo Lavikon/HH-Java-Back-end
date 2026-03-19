@@ -13,7 +13,7 @@ public class CategoryController {
 
 
     // repos 
-    private CategoryRepository repository;
+    private final CategoryRepository repository;
     public CategoryController(CategoryRepository repository) {
         this.repository = repository;
     }

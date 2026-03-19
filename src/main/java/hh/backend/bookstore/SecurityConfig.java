@@ -11,12 +11,6 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-// import org.springframework.security.core.userdetails.User;
-// import org.springframework.security.core.userdetails.UserDetails;
-// import org.springframework.security.core.userdetails.UserDetailsService;
-// import org.springframework.security.crypto.factory.PasswordEncoderFactories;
-// import org.springframework.security.crypto.password.PasswordEncoder;
-// import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
@@ -29,7 +23,6 @@ public class SecurityConfig {
         http
         .authorizeHttpRequests(auth -> auth
             .requestMatchers("/css/**").permitAll() // access to CSS 
-            // .requestMatchers("/delete/**").hasRole("ADMIN") // restricted delete to ADMIN (Ex c6.1f)
             .requestMatchers("/delete/**").hasAuthority("ADMIN") // replaces hasRole (Ex c6.2f)
             .anyRequest().authenticated()
         )
@@ -50,34 +43,4 @@ public class SecurityConfig {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
-    // In memory user list (Ex c6.1b)
-    // Replaced by AppUser entity+repo, UserDetailService and commandlinerunner (Ex c6.2e)
-
-    // @Bean
-    // public UserDetailsService userDetailsService() {
-    //     // list to save users in
-    //     List<UserDetails> users = new ArrayList<>();
-
-    //     // Encode passwords
-    //     PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
-
-    //     // create users
-    //     UserDetails user1 = User
-    //         .withUsername("user")
-    //         .password(passwordEncoder.encode("user"))
-    //         .roles("USER")
-    //         .build();
-    //     users.add(user1);
-        
-    //     // create admin
-    //     UserDetails admin1 = User
-    //         .withUsername("admin")
-    //         .password(passwordEncoder.encode("admin"))
-    //         .roles("USER", "ADMIN")
-    //         .build();
-    //     users.add(admin1);
-
-    //     return new InMemoryUserDetailsManager(users);
-    // }
 }

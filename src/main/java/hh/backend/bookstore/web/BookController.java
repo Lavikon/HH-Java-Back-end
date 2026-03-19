@@ -19,8 +19,8 @@ public class BookController {
 
     // DATABASE
     // add the repositories
-    private BookRepository repository; // (Ex c3.2)
-    private CategoryRepository cRepository; // (Ex c4.4)
+    private final BookRepository repository; // (Ex c3.2)
+    private final CategoryRepository cRepository; // (Ex c4.4)
 
     public BookController(BookRepository repository,CategoryRepository cRepository) {
         this.repository = repository;
@@ -56,7 +56,9 @@ public class BookController {
     // Edit book (Ex c3.4)
     @GetMapping("/edit/{id}")
     public String editBook(@PathVariable("id") Long id, Model model) {
-        Book book = repository.findById(id).orElse(null);
+        Book book = repository.findById(id)
+        .orElseThrow(() -> new IllegalArgumentException("Book not found: " + id)); // Replaces .orElse(null) which creates a new book
+        // instead this will give an error message (Ex c7 refinement)
         model.addAttribute("book", book);
         model.addAttribute("categories", cRepository.findAll()); // added to pass categories to form (Ex c4.4)
         return "bookform";   // reuse same form

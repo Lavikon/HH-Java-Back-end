@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class BookRestController {
 
     // repo
-    private BookRepository bRepository;
+    private final BookRepository bRepository;
     // repo constructor
     public BookRestController(BookRepository bRepository) {
         this.bRepository = bRepository;

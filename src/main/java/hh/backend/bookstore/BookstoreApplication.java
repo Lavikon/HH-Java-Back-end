@@ -36,28 +36,12 @@ public class BookstoreApplication {
             bRepository.save(new Book("1984", "George Orwell", 1949, "9780155658110", 19.99, fiction));
             bRepository.save(new Book("Foundation", "Isaac Asimov", 1951, "9780553293357", 24.99, scifi));
             bRepository.save(new Book("Fellowship of the Ring, The", "J.R.R. Tolkien", 1954, "9780008567125", 21.99, fantasy));
-
-            // Print output to confirm input
-            System.out.println("Categories in database:");
-            for (Category category : cRepository.findAll()) {
-                System.out.println(category.getCategoryid() + " " + category.getName());
-            }
-
-			System.out.println("Books in database:");
-			for (Book book : bRepository.findAll()) {
-				System.out.println(book.getTitle() + " by " + book.getAuthor() + " in " + book.getCategory());
-			}
             
             // Adding users for securityDB with BCrypt (Ex c6.2d)
             BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
             uRepository.save(new AppUser("user", encoder.encode("user"), "user@mail.com", "USER"));
             uRepository.save(new AppUser("admin", encoder.encode("admin"), "admin@mail.com", "ADMIN"));
 
-            // Confirm users were created
-            System.out.println("Users in database:");
-            for (AppUser user : uRepository.findAll()) {
-                System.out.println(user.getUsername() + " as " + user.getRole());
-            }
 		};  
     }
 }
